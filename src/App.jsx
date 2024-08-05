@@ -1,12 +1,16 @@
 import Header from './components/Header';
 import ProductList from './components/ProductList';
+import Cart from './components/Cart';
 import './App.css';
 
 function App() {
    return (
       <>
-         <Header />
-         <ProductList />
+         <div className="wrapper">
+            <Header />
+            <ProductList />
+            <Cart />
+         </div>
       </>
    );
 }
