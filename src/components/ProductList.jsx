@@ -39,11 +39,7 @@ export default function ProductList() {
       <ul className="product-list">
          {data.map((product) => {
             return (
-               <ProductItem
-                  key={crypto.randomUUID()}
-                  product={product}
-                  addToCart={addToCart}
-               />
+               <ProductItem key={product.name} product={product} addToCart={addToCart} />
             );
          })}
       </ul>
