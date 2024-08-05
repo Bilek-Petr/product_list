@@ -1,22 +1,44 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import QuantityControl from './QuantityControl';
+import AddToCartButton from './AddToCartButton';
 
 export default function ProductItem({ product, addToCart }) {
-   const [quantity, setQuantity] = useState(1);
+   const [productWithQuantity, setProductWithQuantity] = useState({
+      ...product,
+      quantity: 0,
+   });
    const [isAdded, setIsAdded] = useState(false);
 
+   useEffect(() => {
+      console.log(`${product.name} / ${productWithQuantity.quantity}`);
+   }, [productWithQuantity.quantity]);
+
    const incrementQuantity = () => {
-      if (quantity < 9) setQuantity((prevQuantity) => prevQuantity + 1);
+      if (productWithQuantity.quantity < 9) {
+         setProductWithQuantity((prevProduct) => ({
+            ...prevProduct,
+            quantity: prevProduct.quantity + 1,
+         }));
+      }
    };
 
    const decrementQuantity = () => {
-      if (quantity > 1) setQuantity((prevQuantity) => prevQuantity - 1);
+      if (productWithQuantity.quantity > 1) {
+         setProductWithQuantity((prevProduct) => ({
+            ...prevProduct,
+            quantity: prevProduct.quantity - 1,
+         }));
+      }
    };
 
-   const handleAddToCart = (e) => {
-      e.preventDefault();
-      addToCart({ ...product, quantity });
+   const handleAddToCart = () => {
+      setProductWithQuantity((prevProduct) => ({
+         ...prevProduct,
+         quantity: 1,
+      }));
       setIsAdded(true);
+      addToCart({ ...product, quantity: 1 });
    };
 
    return (
@@ -27,35 +49,13 @@ export default function ProductItem({ product, addToCart }) {
          <p className="product-item__price">${product.price.toFixed(2)}</p>
 
          {isAdded ? (
-            <button
-               className="btn btn--quantity"
-               style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-            >
-               <div className="product-item__quantity" onClick={incrementQuantity}>
-                  <img
-                     src="/assets/images/icon-increment-quantity.svg"
-                     alt={`increment quantity of ${product.name}`}
-                  />
-               </div>
-               <span>{quantity}</span>
-               <div className="product-item__quantity" onClick={decrementQuantity}>
-                  <img
-                     src="/assets/images/icon-decrement-quantity.svg"
-                     alt={`decrement quantity of ${product.name}`}
-                  />
-               </div>
-            </button>
+            <QuantityControl
+               quantity={productWithQuantity.quantity}
+               incrementQuantity={incrementQuantity}
+               decrementQuantity={decrementQuantity}
+            />
          ) : (
-            <button
-               type="button"
-               className="btn btn--addToCart"
-               onClick={handleAddToCart}
-            >
-               <div>
-                  <img src="/assets/images/icon-add-to-cart.svg" alt="" />
-               </div>
-               Add to cart
-            </button>
+            <AddToCartButton onAddToCart={handleAddToCart} />
          )}
       </li>
    );
