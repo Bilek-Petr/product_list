@@ -1,3 +1,4 @@
+import ProductItem from './ProductItem';
 import { useState, useEffect } from 'react';
 
 export default function ProductList() {
@@ -18,19 +19,10 @@ export default function ProductList() {
    }, []);
 
    return (
-      <>
-         <ul className="product-list">
-            {data.map((product) => {
-               return (
-                  <li key={crypto.randomUUID()} className="product-list__item">
-                     <img src={product.image.desktop} alt={product.name} />
-                     <h2 className="product-item__category">{product.category}</h2>
-                     <p className="product-item__name">{product.name}</p>
-                     <p className="product-item__price">{product.price}</p>
-                  </li>
-               );
-            })}
-         </ul>
-      </>
+      <ul className="product-list">
+         {data.map((product) => {
+            return <ProductItem key={crypto.randomUUID()} product={product} />;
+         })}
+      </ul>
    );
 }
