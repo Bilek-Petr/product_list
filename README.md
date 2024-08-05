@@ -1,1 +1,1 @@
-## REACT PRODUCT LIST APP - in progress.
+## REACT PRODUCT LIST  - in progress.
