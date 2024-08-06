@@ -1,4 +1,5 @@
 import ProductItem from './ProductItem';
+import Cart from './Cart';
 import { useState, useEffect } from 'react';
 
 export default function ProductList() {
@@ -33,15 +34,39 @@ export default function ProductList() {
       });
    };
 
+   const removeFromCart = (product) => {
+      setCart((prevCart) => {
+         return prevCart.map((item) =>
+            item.name === product.name ? { ...item, quantity: 0 } : item
+         );
+      });
+   };
+
+   const updateCartQuantity = (name, quantity) => {
+      setCart((prevCart) =>
+         prevCart.map((item) => (item.name === name ? { ...item, quantity } : item))
+      );
+   };
+
    console.log(cart);
 
    return (
-      <ul className="product-list">
-         {data.map((product) => {
-            return (
-               <ProductItem key={product.name} product={product} addToCart={addToCart} />
-            );
-         })}
-      </ul>
+      <>
+         <ul className="product-list">
+            {data.map((product) => {
+               return (
+                  <ProductItem
+                     key={product.name}
+                     product={product}
+                     cart={cart}
+                     addToCart={addToCart}
+                     updateCartQuantity={updateCartQuantity}
+                     removeFromCart={removeFromCart}
+                  />
+               );
+            })}
+         </ul>
+         <Cart cartItems={cart} removeFromCart={removeFromCart} />
+      </>
    );
 }
