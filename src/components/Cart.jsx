@@ -1,16 +1,14 @@
 import CartItem from './CartItem';
 import PropTypes from 'prop-types';
+import { calculateTotalPrice } from '../utils/priceUtils';
 
-export default function Cart({ cartItems, removeFromCart }) {
+export default function Cart({ cartItems, removeFromCart, onConfirmOrder }) {
    const itemsWithTotalPrice = cartItems.map((item) => ({
       ...item,
       itemPriceTotal: item.quantity * item.price,
    }));
 
-   const priceTotal = itemsWithTotalPrice.reduce(
-      (total, item) => total + item.itemPriceTotal,
-      0
-   );
+   const priceTotal = calculateTotalPrice(cartItems);
 
    return (
       <div className="cart">
@@ -35,6 +33,7 @@ export default function Cart({ cartItems, removeFromCart }) {
                <div className="cart__total">
                   <p>Total Price: ${priceTotal.toFixed(2)}</p>
                </div>
+               <button onClick={onConfirmOrder}>Confirm Order</button>
             </>
          )}
       </div>
