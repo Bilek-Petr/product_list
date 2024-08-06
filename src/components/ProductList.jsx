@@ -1,10 +1,12 @@
 import ProductItem from './ProductItem';
 import Cart from './Cart';
-import { useState, useEffect } from 'react';
+import OrderSummary from './OrderSummary';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function ProductList() {
    const [data, setData] = useState([]);
    const [cart, setCart] = useState([]);
+   const [isOrderSummaryVisible, setIsOrderSummaryVisible] = useState(false);
 
    useEffect(() => {
       const fetchData = async () => {
@@ -44,7 +46,14 @@ export default function ProductList() {
       );
    };
 
-   console.log(cart);
+   const handleConfirmOrder = () => {
+      setIsOrderSummaryVisible(true);
+   };
+
+   const handleStartNewOrder = () => {
+      setCart([]); // Reset cart
+      setIsOrderSummaryVisible(false);
+   };
 
    return (
       <>
@@ -62,7 +71,14 @@ export default function ProductList() {
                );
             })}
          </ul>
-         <Cart cartItems={cart} removeFromCart={removeFromCart} />
+         <Cart
+            cartItems={cart}
+            removeFromCart={removeFromCart}
+            onConfirmOrder={handleConfirmOrder}
+         />
+         {isOrderSummaryVisible && (
+            <OrderSummary cartItems={cart} onStartNewOrder={handleStartNewOrder} />
+         )}
       </>
    );
 }
