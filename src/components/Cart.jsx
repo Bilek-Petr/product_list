@@ -1,3 +1,4 @@
+import CartItem from './CartItem';
 import PropTypes from 'prop-types';
 
 export default function Cart({ cartItems, removeFromCart }) {
@@ -24,14 +25,11 @@ export default function Cart({ cartItems, removeFromCart }) {
             <>
                <ul>
                   {itemsWithTotalPrice.map((item) => (
-                     <li key={item.name}>
-                        <p>{item.name}</p>
-                        <div>
-                           <p>Quantity: {item.quantity}</p>
-                           <p>Price: ${item.price.toFixed(2)}</p>
-                        </div>
-                        <button onClick={() => removeFromCart(item)}>X</button>
-                     </li>
+                     <CartItem
+                        key={item.name}
+                        item={item}
+                        removeFromCart={removeFromCart}
+                     />
                   ))}
                </ul>
                <div className="cart__total">
