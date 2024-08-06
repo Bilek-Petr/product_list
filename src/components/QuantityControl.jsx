@@ -10,17 +10,18 @@ export default function QuantityControl({
          className="btn btn--quantity"
          style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
       >
-         <div className="product-item__quantity" onClick={incrementQuantity}>
-            <img
-               src="/assets/images/icon-increment-quantity.svg"
-               alt={`increment quantity`}
-            />
-         </div>
-         <span>{quantity}</span>
          <div className="product-item__quantity" onClick={decrementQuantity}>
             <img
                src="/assets/images/icon-decrement-quantity.svg"
                alt={`decrement quantity`}
+            />
+         </div>
+
+         <span>{quantity}</span>
+         <div className="product-item__quantity" onClick={incrementQuantity}>
+            <img
+               src="/assets/images/icon-increment-quantity.svg"
+               alt={`increment quantity`}
             />
          </div>
       </button>
