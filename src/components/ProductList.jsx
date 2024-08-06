@@ -35,11 +35,7 @@ export default function ProductList() {
    };
 
    const removeFromCart = (product) => {
-      setCart((prevCart) => {
-         return prevCart.map((item) =>
-            item.name === product.name ? { ...item, quantity: 0 } : item
-         );
-      });
+      setCart((prevCart) => prevCart.filter((item) => item.name !== product.name));
    };
 
    const updateCartQuantity = (name, quantity) => {

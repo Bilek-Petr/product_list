@@ -9,7 +9,6 @@ function App() {
          <div className="wrapper">
             <Header />
             <ProductList />
-            <Cart />
          </div>
       </>
    );
