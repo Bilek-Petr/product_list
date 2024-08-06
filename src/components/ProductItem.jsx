@@ -3,7 +3,13 @@ import { useState, useEffect } from 'react';
 import QuantityControl from './QuantityControl';
 import AddToCartButton from './AddToCartButton';
 
-export default function ProductItem({ product, addToCart }) {
+export default function ProductItem({
+   product,
+   cart,
+   addToCart,
+   updateCartQuantity,
+   removeFromCart,
+}) {
    const [productWithQuantity, setProductWithQuantity] = useState({
       ...product,
       quantity: 0,
@@ -11,24 +17,25 @@ export default function ProductItem({ product, addToCart }) {
    const [isAdded, setIsAdded] = useState(false);
 
    useEffect(() => {
-      console.log(`${product.name} / ${productWithQuantity.quantity}`);
-   }, [productWithQuantity.quantity]);
+      const cartItem = cart.find((item) => item.name === product.name);
+      if (cartItem) {
+         setProductWithQuantity(cartItem);
+         setIsAdded(cartItem.quantity > 0);
+      } else {
+         setProductWithQuantity({ ...product, quantity: 0 });
+         setIsAdded(false);
+      }
+   }, [cart, product]);
 
    const incrementQuantity = () => {
       if (productWithQuantity.quantity < 9) {
-         setProductWithQuantity((prevProduct) => ({
-            ...prevProduct,
-            quantity: prevProduct.quantity + 1,
-         }));
+         updateCartQuantity(product.name, productWithQuantity.quantity + 1);
       }
    };
 
    const decrementQuantity = () => {
       if (productWithQuantity.quantity > 1) {
-         setProductWithQuantity((prevProduct) => ({
-            ...prevProduct,
-            quantity: prevProduct.quantity - 1,
-         }));
+         updateCartQuantity(product.name, productWithQuantity.quantity - 1);
       }
    };
 
@@ -39,6 +46,10 @@ export default function ProductItem({ product, addToCart }) {
       }));
       setIsAdded(true);
       addToCart({ ...product, quantity: 1 });
+   };
+
+   const handleRemoveFromCart = () => {
+      removeFromCart(product);
    };
 
    return (
@@ -72,4 +83,5 @@ ProductItem.propTypes = {
       price: PropTypes.number.isRequired,
    }).isRequired,
    addToCart: PropTypes.func.isRequired,
+   updateCartQuantity: PropTypes.func.isRequired,
 };
