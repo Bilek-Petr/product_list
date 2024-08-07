@@ -6,10 +6,7 @@ export default function QuantityControl({
    decrementQuantity,
 }) {
    return (
-      <button
-         className="btn btn--quantity"
-         style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-      >
+      <button className="btn btn--quantity btn--product">
          <div className="product-item__quantity" onClick={decrementQuantity}>
             <img
                src="/assets/images/icon-decrement-quantity.svg"
