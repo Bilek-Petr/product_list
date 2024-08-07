@@ -48,29 +48,37 @@ export default function ProductList() {
 
    const handleConfirmOrder = () => {
       setIsOrderSummaryVisible(true);
+      document.body.classList.add('no-scroll');
    };
 
    const handleStartNewOrder = () => {
       setCart([]); // Reset cart
       setIsOrderSummaryVisible(false);
+      document.body.classList.remove('no-scroll');
    };
 
    return (
       <>
-         <ul className="product-list">
-            {data.map((product) => {
-               return (
-                  <ProductItem
-                     key={product.name}
-                     product={product}
-                     cart={cart}
-                     addToCart={addToCart}
-                     updateCartQuantity={updateCartQuantity}
-                     removeFromCart={removeFromCart}
-                  />
-               );
-            })}
-         </ul>
+         <div className="product-list-wrapper">
+            {/* inserted header here just so it's easier to flex it, not what i am focusing on right now */}
+            <header className="header">
+               <h1 className="header__title">Desserts</h1>
+            </header>
+            <ul className="product-list">
+               {data.map((product) => {
+                  return (
+                     <ProductItem
+                        key={product.name}
+                        product={product}
+                        cart={cart}
+                        addToCart={addToCart}
+                        updateCartQuantity={updateCartQuantity}
+                        removeFromCart={removeFromCart}
+                     />
+                  );
+               })}
+            </ul>
+         </div>
          <Cart
             cartItems={cart}
             removeFromCart={removeFromCart}
