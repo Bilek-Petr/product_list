@@ -5,8 +5,14 @@ body {
 }
 
 .wrapper {
-   width: min(85%, 1200px);
+   width: min(85%, 1440px);
    margin: 0 auto;
    display: flex;
    flex-direction: column;
+   padding: 3rem 0;
+
+   @include respond-to(desktop) {
+      flex-direction: row;
+      gap: 2rem;
+   }
 }
