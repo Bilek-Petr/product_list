@@ -48,13 +48,15 @@ export default function ProductList() {
 
    const handleConfirmOrder = () => {
       setIsOrderSummaryVisible(true);
-      document.body.classList.add('no-scroll');
    };
 
    const handleStartNewOrder = () => {
       setCart([]); // Reset cart
       setIsOrderSummaryVisible(false);
-      document.body.classList.remove('no-scroll');
+   };
+
+   const handleCloseOrderSummary = () => {
+      setIsOrderSummaryVisible(false);
    };
 
    return (
@@ -85,7 +87,9 @@ export default function ProductList() {
             onConfirmOrder={handleConfirmOrder}
          />
          {isOrderSummaryVisible && (
-            <OrderSummary cartItems={cart} onStartNewOrder={handleStartNewOrder} />
+            <div className="order-confirmation-wrapper" onClick={handleCloseOrderSummary}>
+               <OrderSummary cartItems={cart} onStartNewOrder={handleStartNewOrder} />
+            </div>
          )}
       </>
    );
