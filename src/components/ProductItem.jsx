@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import QuantityControl from './QuantityControl';
 import AddToCartButton from './AddToCartButton';
+import ResponsiveImage from './ResponsiveImage';
 
 export default function ProductItem({
    product,
@@ -54,20 +55,26 @@ export default function ProductItem({
 
    return (
       <li className="product-list__item">
-         <img src={product.image.desktop} alt={product.name} />
-         <h2 className="product-item__category">{product.category}</h2>
-         <p className="product-item__name">{product.name}</p>
-         <p className="product-item__price">${product.price.toFixed(2)}</p>
-
-         {isAdded ? (
-            <QuantityControl
-               quantity={productWithQuantity.quantity}
-               incrementQuantity={incrementQuantity}
-               decrementQuantity={decrementQuantity}
-            />
-         ) : (
-            <AddToCartButton onAddToCart={handleAddToCart} />
-         )}
+         <div className="product-list__item-container">
+            <div className="product-list__item-img">
+               {/* <img src={product.image.mobile} alt={product.name} /> */}
+               <ResponsiveImage product={product} />
+               {isAdded ? (
+                  <QuantityControl
+                     quantity={productWithQuantity.quantity}
+                     incrementQuantity={incrementQuantity}
+                     decrementQuantity={decrementQuantity}
+                  />
+               ) : (
+                  <AddToCartButton onAddToCart={handleAddToCart} />
+               )}
+            </div>
+         </div>
+         <div className="product-list__item-info">
+            <h2 className="product-list__item-category">{product.category}</h2>
+            <p className="product-list__item-name">{product.name}</p>
+            <p className="product-list__item-price">${product.price.toFixed(2)}</p>
+         </div>
       </li>
    );
 }
