@@ -11,7 +11,7 @@ export default function ProductList() {
    useEffect(() => {
       const fetchData = async () => {
          try {
-            const response = await fetch('/assets/data/data.json');
+            const response = await fetch('/product_list/assets/data/data.json');
             const result = await response.json();
             setData(result);
          } catch (err) {

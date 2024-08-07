@@ -14,7 +14,10 @@ export default function CartItem({ item, removeFromCart }) {
             </div>
          </div>
          <button className="btn btn--remove" onClick={() => removeFromCart(item)}>
-            <img src="/assets/images/icon-remove-item.svg" alt="remove item icon" />
+            <img
+               src="/product_list/assets/images/icon-remove-item.svg"
+               alt="remove item icon"
+            />
          </button>
       </li>
    );

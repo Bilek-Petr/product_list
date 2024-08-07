@@ -57,7 +57,6 @@ export default function ProductItem({
       <li className="product-list__item">
          <div className="product-list__item-container">
             <div className="product-list__item-img">
-               {/* <img src={product.image.mobile} alt={product.name} /> */}
                <ResponsiveImage product={product} />
                {isAdded ? (
                   <QuantityControl

@@ -6,6 +6,8 @@
    background-color: $color-red;
    color: $color-rose-100;
    padding: 0.6rem 1.3rem;
+   cursor: pointer;
+   transition: all 0.1s ease-in-out;
 }
 
 .btn--add-to-cart {
@@ -16,6 +18,12 @@
    font-weight: $font-medium;
    border: 1px solid $color-rose-400;
    width: 9.5rem;
+   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+   &:hover {
+      color: $color-red;
+      border: 1px solid $color-red;
+   }
 }
 
 .btn--quantity {
@@ -47,6 +55,10 @@
    margin: 0 auto;
    font-weight: $font-medium;
    width: 100%;
+
+   &:hover {
+      opacity: 0.85;
+   }
 }
 
 .btn--remove {

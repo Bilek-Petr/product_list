@@ -16,13 +16,13 @@ export default function Cart({ cartItems, removeFromCart, onConfirmOrder }) {
 
          {cartItems.length === 0 ? (
             <>
-               <div className="card__img">
+               <div className="cart__img">
                   <img
-                     src="/assets/images/illustration-empty-cart.svg"
+                     src="/product_list/assets/images/illustration-empty-cart.svg"
                      alt="Empty cart"
                   />
                </div>
-               <p className="card__description">Your added items will appear here</p>
+               <p className="cart__description">Your added items will appear here</p>
             </>
          ) : (
             <>
