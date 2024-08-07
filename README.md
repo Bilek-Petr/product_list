@@ -1,6 +1,10 @@
-# REACT product list app
+# REACT Product List app
 
 The task is from [Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d)
+
+## Demo
+
+You can view a live demo of the Responsive Product List [here](https://bilek-petr.github.io/product_list/).
 
 ## Used
 <p align="left">
