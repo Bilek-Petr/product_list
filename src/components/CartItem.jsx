@@ -2,13 +2,20 @@ import PropTypes from 'prop-types';
 
 export default function CartItem({ item, removeFromCart }) {
    return (
-      <li key={item.name}>
-         <p>{item.name}</p>
+      <li className="cart__list-item" key={item.name}>
          <div>
-            <p>Quantity: {item.quantity}</p>
-            <p>Price: ${item.price.toFixed(2)}</p>
+            <p className="cart__list-item-name">{item.name}</p>
+            <div className="cart__list-item-info">
+               <p className="cart__list-item-qty">{item.quantity}x</p>
+               <p className="cart__list-item-price">@ ${item.price.toFixed(2)}</p>
+               <p className="cart__list-item-total-price">
+                  ${(item.quantity * item.price).toFixed(2)}
+               </p>
+            </div>
          </div>
-         <button onClick={() => removeFromCart(item)}>X</button>
+         <button className="btn btn--remove" onClick={() => removeFromCart(item)}>
+            <img src="/assets/images/icon-remove-item.svg" alt="remove item icon" />
+         </button>
       </li>
    );
 }

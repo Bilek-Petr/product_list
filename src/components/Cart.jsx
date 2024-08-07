@@ -15,13 +15,18 @@ export default function Cart({ cartItems, removeFromCart, onConfirmOrder }) {
          <p className="cart__title">Your Cart ({cartItems.length})</p>
 
          {cartItems.length === 0 ? (
-            <div>
-               <img src="/assets/images/illustration-empty-cart.svg" alt="Empty cart" />
+            <>
+               <div className="card__img">
+                  <img
+                     src="/assets/images/illustration-empty-cart.svg"
+                     alt="Empty cart"
+                  />
+               </div>
                <p className="card__description">Your added items will appear here</p>
-            </div>
+            </>
          ) : (
             <>
-               <ul>
+               <ul className="cart-list">
                   {itemsWithTotalPrice.map((item) => (
                      <CartItem
                         key={item.name}
@@ -31,9 +36,12 @@ export default function Cart({ cartItems, removeFromCart, onConfirmOrder }) {
                   ))}
                </ul>
                <div className="cart__total">
-                  <p>Total Price: ${priceTotal.toFixed(2)}</p>
+                  <p className="cart__total-order">Order Total</p>
+                  <p className="cart__total-price">${priceTotal.toFixed(2)}</p>
                </div>
-               <button onClick={onConfirmOrder}>Confirm Order</button>
+               <button className="btn btn--confirm" onClick={onConfirmOrder}>
+                  Confirm Order
+               </button>
             </>
          )}
       </div>
