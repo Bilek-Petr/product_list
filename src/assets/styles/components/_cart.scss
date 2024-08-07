@@ -68,17 +68,17 @@
 }
 
 // if cart is empty
-.card__img,
-.card__description {
+.cart__img,
+.cart__description {
    display: flex;
    justify-content: center;
 }
 
-.card__img {
+.cart__img {
    padding: 1rem 0;
 }
 
-.card__description {
+.cart__description {
    color: $color-rose-400;
    font-weight: $font-medium;
    font-size: 0.9rem;

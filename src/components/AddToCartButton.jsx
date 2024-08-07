@@ -8,7 +8,7 @@ export default function AddToCartButton({ onAddToCart }) {
          onClick={onAddToCart}
       >
          <div>
-            <img src="/assets/images/icon-add-to-cart.svg" alt="" />
+            <img src={`/product_list/assets/images/icon-add-to-cart.svg`} alt="" />
          </div>
          Add to cart
       </button>

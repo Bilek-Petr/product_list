@@ -9,7 +9,7 @@ export default function QuantityControl({
       <button className="btn btn--quantity btn--product">
          <div className="product-item__quantity" onClick={decrementQuantity}>
             <img
-               src="/assets/images/icon-decrement-quantity.svg"
+               src="/product_list/assets/images/icon-decrement-quantity.svg"
                alt={`decrement quantity`}
             />
          </div>
@@ -17,7 +17,7 @@ export default function QuantityControl({
          <span>{quantity}</span>
          <div className="product-item__quantity" onClick={incrementQuantity}>
             <img
-               src="/assets/images/icon-increment-quantity.svg"
+               src="/product_list/assets/images/icon-increment-quantity.svg"
                alt={`increment quantity`}
             />
          </div>

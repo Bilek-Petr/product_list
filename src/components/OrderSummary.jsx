@@ -11,7 +11,7 @@ export default function OrderSummary({ cartItems, onStartNewOrder }) {
       <div className="order-tab" onClick={handleClick}>
          <div className="order-tab__img">
             <img
-               src="/assets/images/icon-order-confirmed.svg"
+               src="/product_list/assets/images/icon-order-confirmed.svg"
                alt="order confirmed icon"
             />
          </div>
