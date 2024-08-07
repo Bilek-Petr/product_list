@@ -1,0 +1,56 @@
+.btn {
+   display: flex;
+   gap: 0.5rem;
+   border-radius: 100px;
+   border: none;
+   background-color: $color-red;
+   color: $color-rose-100;
+   padding: 0.6rem 1.3rem;
+}
+
+.btn--add-to-cart {
+   @include flex-center;
+   background-color: $color-rose-50;
+   color: $color-rose-900;
+   font-size: 0.9rem;
+   font-weight: $font-medium;
+   border: 1px solid $color-rose-400;
+   width: 9.5rem;
+}
+
+.btn--quantity {
+   @include flex-center;
+   font-weight: $font-medium;
+   gap: 2.2rem;
+
+   & div {
+      display: flex;
+      width: 1rem;
+      height: 1rem;
+      border: 1px solid white;
+      padding: 0.2rem;
+      border-radius: 100px;
+   }
+}
+
+.btn--product {
+   position: absolute;
+   bottom: -1.2rem;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.btn--confirm,
+.btn--new-order {
+   display: flex;
+   justify-content: center;
+   margin: 0 auto;
+   font-weight: $font-medium;
+   width: 100%;
+}
+
+.btn--remove {
+   background-color: transparent;
+   border: 1px solid $color-rose-300;
+   padding: 0.35rem;
+}

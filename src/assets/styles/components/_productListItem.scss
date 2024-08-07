@@ -1,0 +1,35 @@
+.product-list__item {
+   list-style-type: none;
+}
+
+.product-list__item-img {
+   overflow: hidden;
+   border-radius: 10px;
+}
+
+.product-list__item-container {
+   position: relative;
+}
+
+.product-list__item-info {
+   margin: 2rem 0;
+}
+
+.product-list__item-category {
+   font-size: 0.9rem;
+   color: $color-rose-400;
+}
+
+.product-list__item-name {
+   color: $color-rose-900;
+   font-weight: $font-medium;
+}
+
+.product-list__item-price {
+   color: $color-red;
+   font-weight: $font-medium;
+}
+
+.product-list__item:has(.btn--quantity) .product-list__item-img {
+   outline: 2px solid $color-red;
+}

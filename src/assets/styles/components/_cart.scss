@@ -1,0 +1,80 @@
+.cart {
+   display: flex;
+   flex-direction: column;
+   background-color: white;
+   padding: 2rem 1rem;
+   border-radius: 1rem;
+   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+.cart__title {
+   color: $color-red;
+   font-size: 1.3rem;
+   font-weight: $font-medium;
+}
+
+.cart-list {
+   list-style-type: none;
+   padding: 0;
+}
+
+.cart__list-item,
+.order-tab__list-item {
+   //so I dont have to repeat myself
+   @include flex-center;
+   padding: 1rem 0;
+   border-bottom: 1px solid hsla(14, 24%, 72%, 0.603);
+}
+
+.cart__list-item-info {
+   display: flex;
+   gap: 1.35rem;
+   font-size: 0.9rem;
+   padding-top: 0.25rem;
+}
+
+.cart__list-item-name,
+.cart__list-item-qty,
+.cart__list-item-price {
+   font-weight: $font-medium;
+   font-size: 0.9rem;
+}
+
+.cart__list-item-name {
+   color: $color-rose-900;
+}
+
+.cart__list-item-qty {
+   color: $color-red;
+}
+
+.cart__list-item-price {
+   color: $color-rose-400;
+}
+
+.cart__total {
+   @include flex-center;
+   padding: 2rem 0;
+}
+
+.cart__total-price {
+   font-size: 1.4rem;
+   font-weight: $font-medium;
+}
+
+// if cart is empty
+.card__img,
+.card__description {
+   display: flex;
+   justify-content: center;
+}
+
+.card__img {
+   padding: 1rem 0;
+}
+
+.card__description {
+   color: $color-rose-400;
+   font-weight: $font-medium;
+   font-size: 0.9rem;
+}

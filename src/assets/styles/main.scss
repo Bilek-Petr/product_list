@@ -1,5 +1,5 @@
-@import './utilities/index';
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
-body {
-   // background-color: red;
-}
+@import './utilities/index';
+@import './components/index';
+@import './layouts/index';
