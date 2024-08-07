@@ -1,12 +1,14 @@
 import { calculateTotalPrice } from '../utils/priceUtils';
 
 export default function OrderSummary({ cartItems, onStartNewOrder }) {
-   console.log(cartItems);
-
    const totalPrice = calculateTotalPrice(cartItems);
 
+   const handleClick = (e) => {
+      e.stopPropagation();
+   };
+
    return (
-      <div className="order-tab">
+      <div className="order-tab" onClick={handleClick}>
          <div className="order-tab__img">
             <img
                src="/assets/images/icon-order-confirmed.svg"
